@@ -135,7 +135,7 @@ class Sorting {
             if (!indices[count]){
                 clearInterval(loop);
             }
-        }, 300);
+        }, 600);
     }
 }
 
