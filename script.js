@@ -8,7 +8,7 @@ class Sorting {
             this.array.push(parseFloat($('.moveUp a')[i].text));
         }
     }
-    
+
     setWidthByValue(){
         let largestNumber = Math.max(...this.array), percentArray = [];
         this.array.forEach((element)=>{
@@ -21,7 +21,7 @@ class Sorting {
 
     bubbleSort() {
         let newArrays = [], indices = [];
-        var newArray = [...this.array];
+        let newArray = [...this.array];
         let len = newArray.length;
         if (!this.sorted){
             for (let i = 0; i < len; i++) {
@@ -52,7 +52,7 @@ class Sorting {
     }
     selectionSort(){
         let newArrays = [], indices = [];
-        var newArray = [...this.array];
+        let newArray = [...this.array];
         let len = newArray.length;
         if (!this.sorted){
             for (let i = 0; i < len; i++) {
@@ -76,7 +76,7 @@ class Sorting {
     }
     switchPlaces(index1, index2) {
         if (index1 > index2){
-            var temp = index2;
+            let temp = index2;
             index2 = index1;
             index1 = temp;
         }
@@ -106,7 +106,7 @@ class Sorting {
         }   
     }
     applyChanges(indices){
-        var count = 0;
+        let count = 0;
         const loop = setInterval(()=>{
             this.switchPlaces(indices[count][0], indices[count][1]);
             count++;
@@ -141,6 +141,10 @@ $("#selection-sort").on('click', ()=>{
     $("#title").html("Selection Sort");
 });
 
+$("#insertion-sort").on('click', ()=>{
+    $("#title").html("Insertion Sort");
+});
+
 
 
 const start = () => {
@@ -150,6 +154,8 @@ const start = () => {
             break;
         case "Selection Sort":
             sorting.selectionSort();
+            break;
+        case "Insertion Sort":
             break;
         default:
             alert("Please choose an algorithm to visualize");
