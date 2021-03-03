@@ -74,6 +74,28 @@ class Sorting {
         }
         else {alert("Already sorted");}
     }
+    insertionSort(){
+        let newArrays = [], indices = [];
+        let newArray = [...this.array];
+        let len = newArray.length;
+        if (!this.sorted){
+            let i,key,j;
+            for ( i = 1; i < len; i++) {
+                key = newArray[i];
+                j = i - 1;
+                while (j >= 0 && newArray[j] > key) {
+                    indices.push([j+1, j]);
+                    newArray[j+1] = newArray[j];
+                    j = j-1;
+                }
+                newArray[j+1] = key;
+                newArrays.push([...newArray]);
+            }
+            this.applyChanges(indices);
+            this.sorted = true;
+        }
+        else {alert("Already sorted");}
+    }
     switchPlaces(index1, index2) {
         if (index1 > index2){
             let temp = index2;
@@ -156,6 +178,7 @@ const start = () => {
             sorting.selectionSort();
             break;
         case "Insertion Sort":
+            sorting.insertionSort();
             break;
         default:
             alert("Please choose an algorithm to visualize");
